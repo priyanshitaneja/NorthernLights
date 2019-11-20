@@ -1,0 +1,243 @@
+/* CSS Variables*/
+/* Shortcut fot comment: ctrl+/ */
+
+:root {
+	--primary:#DECCE7;
+	--dark:#333;
+	--light:#fff;
+	--olive:#569C48;
+	--shadow:0 1px 5px rgba(128,0,128,0.3);
+	--button_color: #B180B1;
+}
+
+html1 {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-sarif;
+	color: var(--dark);
+}
+
+body {
+	background: #DECCE7;
+	margin: 0 50px;
+	line-height: 1.4em;
+}
+
+.button {
+	background-color: var(--button_color);
+	color: var(--light);
+	padding: 0.6rem 1.3rem;
+	/* 1rem = 16px */
+	text-decoration: none;
+	border: 0;
+}
+
+.button:hover{
+	background-color: var(--light);
+	color: var(--dark);
+}
+
+img {
+	max-width: 100%;
+}
+
+.wrapper {
+	display: grid;
+	grid-gap: 20px;
+}
+
+/* Navigation */
+.main-nav ul{
+	display: grid;
+	grid-gap: 20px;
+	padding: 0;
+	list-style: none; 
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.main-nav a{
+	background-color: var(--primary);
+	text-decoration: none;
+	display: block;
+	padding: 0.8rem;
+	text-align: center;
+	color: var(--dark);
+	text-transform: uppercase;
+	font-size: 1.1rem;
+	box-shadow: var(--shadow);
+}
+
+.main-nav a:hover {
+	background-color: var(--dark);
+	color: var(--light);
+}
+
+/* Top Container */
+.top-container{
+	display: grid;
+	grid-gap: 20px;
+	grid-template-areas: 
+		'showcase showcase top-box-a'
+		'showcase showcase top-box-b';
+}
+
+/* Showcase */
+.showcase {
+	grid-area: showcase;
+	min-height: 400px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(32, 32, 32, 0.5)), url("img/northernlights.jpg");
+	background-size: cover;
+	background-position: center;
+	padding: 3rem;
+
+	/* To align the items inside grid */
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content:top;
+	box-shadow: var(--shadow);
+}
+
+.showcase h1{
+	color: var(--light);
+	font-size: 4rem;
+	margin-bottom: 1rem;
+	line-height: 1em;
+}
+
+.showcase p{
+	font-size: 1.3rem;
+	color: var(--light);
+}
+
+/* Topbox */
+
+.top-box {
+	background: var(--primary);
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	box-shadow: var(--shadow);
+	padding: 1.5rem;
+}
+
+.top-box .price {
+	font-size: 2rem;
+	line-height: 1em;
+}
+
+.top-box h4{
+	font-size: 1em;
+	line-height: 1em;
+}
+
+.top-box-a {
+	grid-area: top-box-a;
+}
+
+.top-box-b {
+	grid-area: top-box-b;
+}
+
+/* Boxes */
+
+.boxes {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+	/* can also do repeat(4, 1fr) but to make it more responsive, 
+	we use repeat(auto-fit, minmax(200px,1fr). 
+	When you make it smaller, 
+	you don't have to specify template for each media query for each size */
+}
+
+.box {
+	background: var(--primary);
+	text-align: center;
+	box-shadow: var(--shadow);
+	padding: 1.5rem;
+}
+
+/* Info */
+.info {
+	background: var(--primary);
+	box-shadow: var(--shadow);
+	display: grid;
+	grid-gap: 30px;
+	grid-template-columns: repeat(2, 1fr);
+	padding: 3rem;
+	text-align: center;
+}
+
+.info img{
+	align-self: center;	
+	filter: brightness(65%);
+}
+
+/* Poetfolio */
+.portfolio {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
+
+.portfolio img{
+	box-shadow: var(--shadow);
+	filter: brightness(80%);
+}
+
+
+/* Footer */
+
+footer {
+	margin-top: 2em;
+	background: var(--button_color);
+	color: var(--light);
+	text-align: center;
+	padding: 0.1rem;
+}
+
+/* Media query */
+@media(max-width: 700px){
+	.top-container{
+		grid-template-areas: 
+		'showcase showcase'
+		'top-box-a top-box-b'
+	}
+
+	.showcase h1{
+		font-size: 2.5rem;
+	}
+
+	.main-nav ul{
+		grid-template-columns: 1fr;
+	}
+
+	.info{
+		grid-template-columns: 1fr;
+	}
+
+	.info .button {
+		display: block;
+		text-align: center;
+		margin: auto;
+	}
+
+	.portfolio img{
+		width: 300px;
+		height: 300px;
+	}
+}
+
+@media(max-width: 500px){
+	.top-container{
+		grid-template-areas: 
+		'showcase'
+		'top-box-a' 
+		'top-box-b';
+	}
+
+	.portfolio img{
+		width: 400px;
+		height: 400px;
+	}
+}
